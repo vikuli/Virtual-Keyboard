@@ -428,10 +428,10 @@ document.onkeydown = function (event) {
 };
 
 if (localStorage.getItem("count") === "1") {
-  count = localStorage.getItem("count");
+  count = +(localStorage.getItem("count"));
   switchLang();
 } else if (localStorage.getItem("count") === "0") {
-  count = localStorage.getItem("count");
+  count = +(localStorage.getItem("count"));
   switchLang();
 }
 
