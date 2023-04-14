@@ -1,6 +1,6 @@
 // Заполнение документа
 
-function coverDoc () {
+/*function coverDoc() {
   document.querySelector("body").innerHTML =
     "<h1 class=\"title\">Virtual Keyboard</h1>";
   document.querySelector("body").innerHTML +=
@@ -11,136 +11,136 @@ function coverDoc () {
     "<div class=\"key dbl_key spec Backquote\"><span class=\"symbol1\">~</span><span class=\"symbol2\">`</span></div>";
   document.querySelector(".key_container").innerHTML +=
     "<div class=\"key dbl_key spec Digit1\"><span class=\"symbol1\">!</span><span class=\"symbol2 as\">1</span></div>";
+   document.querySelector(".key_container").innerHTML +=
+    '<div class="key dbl_key spec Digit2"><span class="symbol1">@</span><span class="symbol2">2</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit2\"><span class=\"symbol1\">@</span><span class=\"symbol2\">2</span></div>";
+    '<div class="key dbl_key spec Digit3"><span class="symbol1">#</span><span class="symbol2">3</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit3\"><span class=\"symbol1\">#</span><span class=\"symbol2\">3</span></div>";
+    '<div class="key dbl_key spec Digit4"><span class="symbol1">$</span><span class="symbol2">4</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit4\"><span class=\"symbol1\">$</span><span class=\"symbol2\">4</span></div>";
+    '<div class="key dbl_key spec Digit5"><span class="symbol1">%</span><span class="symbol2">5</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit5\"><span class=\"symbol1\">%</span><span class=\"symbol2\">5</span></div>";
+    '<div class="key dbl_key spec Digit6"><span class="symbol1">^</span><span class="symbol2">6</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit6\"><span class=\"symbol1\">^</span><span class=\"symbol2\">6</span></div>";
+    '<div class="key dbl_key spec Digit7"><span class="symbol1">&</span><span class="symbol2">7</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit7\"><span class=\"symbol1\">&</span><span class=\"symbol2\">7</span></div>";
+    '<div class="key dbl_key spec Digit8"><span class="symbol1">*</span><span class="symbol2">8</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit8\"><span class=\"symbol1\">*</span><span class=\"symbol2\">8</span></div>";
+    '<div class="key dbl_key spec Digit9"><span class="symbol1">(</span><span class="symbol2">9</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit9\"><span class=\"symbol1\">(</span><span class=\"symbol2\">9</span></div>";
+    '<div class="key dbl_key spec Digit0"><span class="symbol1">)</span><span class="symbol2">0</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Digit0\"><span class=\"symbol1\">)</span><span class=\"symbol2\">0</span></div>";
+    '<div class="key dbl_key spec Minus"><span class="symbol1">_</span><span class="symbol2">-</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Minus\"><span class=\"symbol1\">_</span><span class=\"symbol2\">-</span></div>";
+    '<div class="key dbl_key spec Equal"><span class="symbol1">+</span><span class="symbol2">=</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Equal\"><span class=\"symbol1\">+</span><span class=\"symbol2\">=</span></div>";
+    '<div class="key key_2x spec Backspace">Backspace</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_2x spec Backspace\">Backspace</div>";
+    '<div class="key key_2x spec Tab">Tab</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_2x spec Tab\">Tab</div>";
+    '<div class="key">Q</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">Q</div>";
+    '<div class="key">W</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">W</div>";
+    '<div class="key">E</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">E</div>";
+    '<div class="key">R</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">R</div>";
+    '<div class="key">T</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">T</div>";
+    '<div class="key">Y</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">Y</div>";
+    '<div class="key">U</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">U</div>";
+    '<div class="key">I</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">I</div>";
+    '<div class="key">O</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">O</div>";
+    '<div class="key">P</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">P</div>";
+    '<div class="key dbl_key spec BracketLeft"><span class="symbol1">{</span><span class="symbol2">[</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec BracketLeft\"><span class=\"symbol1\">{</span><span class=\"symbol2\">[</span></div>";
+    '<div class="key dbl_key spec BracketRight"><span class="symbol1">}</span><span class="symbol2">]</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec BracketRight\"><span class=\"symbol1\">}</span><span class=\"symbol2\">]</span></div>";
+    '<div class="key dbl_key spec Backslash"><span class="symbol1">|</span><span class="symbol2">\\</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Backslash\"><span class=\"symbol1\">|</span><span class=\"symbol2\">\\</span></div>";
+    '<div class="key key_2x spec CapsLock">Caps Lock</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_2x spec CapsLock\">Caps Lock</div>";
+    '<div class="key">A</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">A</div>";
+    '<div class="key">S</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">S</div>";
+    '<div class="key">D</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">D</div>";
+    '<div class="key">F</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">F</div>";
+    '<div class="key">G</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">G</div>";
+    '<div class="key">H</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">H</div>";
+    '<div class="key">J</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">J</div>";
+    '<div class="key">K</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">K</div>";
+    '<div class="key">L</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">L</div>";
+    '<div class="key dbl_key spec Semicolon"><span class="symbol1">:</span><span class="symbol2">;</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Semicolon\"><span class=\"symbol1\">:</span><span class=\"symbol2\">;</span></div>";
+    '<div class="key dbl_key spec Quote"><span class="symbol1">"</span><span class="symbol2">\'</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Quote\"><span class=\"symbol1\">\"</span><span class=\"symbol2\">'</span></div>";
+    '<div class="key key_2x spec Enter">Enter</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_2x spec Enter\">Enter</div>";
+    '<div class="key key_2x spec ShiftLeft">Shift</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_2x spec ShiftLeft\">Shift</div>";
+    '<div class="key">Z</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">Z</div>";
+    '<div class="key">X</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">X</div>";
+    '<div class="key">C</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">C</div>";
+    '<div class="key">V</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">V</div>";
+    '<div class="key">B</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">B</div>";
+    '<div class="key">N</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">N</div>";
+    '<div class="key">M</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key\">M</div>";
+    '<div class="key dbl_key spec Comma"><span class="symbol1"><</span><span class="symbol2">,</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Comma\"><span class=\"symbol1\"><</span><span class=\"symbol2\">,</span></div>";
+    '<div class="key dbl_key spec Period"><span class="symbol1">></span><span class="symbol2">.</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Period\"><span class=\"symbol1\">></span><span class=\"symbol2\">.</span></div>";
+    '<div class="key dbl_key spec Slash"><span class="symbol1">?</span><span class="symbol2">/</span></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key dbl_key spec Slash\"><span class=\"symbol1\">?</span><span class=\"symbol2\">/</span></div>";
+    '<div class="key arrow spec ArrowUp">↑</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key arrow spec ArrowUp\">↑</div>";
+    '<div class="key key_2x spec ShiftRight">Shift</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_2x spec ShiftRight\">Shift</div>";
+    '<div class="key spec ControlLeft">Ctrl</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key spec ControlLeft\">Ctrl</div>";
+    '<div class="key spec MetaLeft">Win</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key spec MetaLeft\">Win</div>";
+    '<div class="key spec AltLeft">Alt</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key spec AltLeft\">Alt</div>";
+    '<div class="key key_6x spec Space"></div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key key_6x spec Space\"></div>";
+    '<div class="key spec AltRight">Alt</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key spec AltRight\">Alt</div>";
+    '<div class="key spec ControlRight">Ctrl</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key spec ControlRight\">Ctrl</div>";
+    '<div class="key arrow spec ArrowLeft">←</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key arrow spec ArrowLeft\">←</div>";
+    '<div class="key arrow spec ArrowDown">↓</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key arrow spec ArrowDown\">↓</div>";
+    '<div class="key arrow spec ArrowRight">→</div>';
   document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key arrow spec ArrowRight\">→</div>";
-  document.querySelector(".key_container").innerHTML +=
-    "<div class=\"key spec Delete\">Del</div>";
+    '<div class="key spec Delete">Del</div>';
 }
-coverDoc();
+coverDoc();*/
 
 // Добавляем/убираем подсветку по нажатию на кнопку клавы
 
-document.addEventListener("keydown", (Event) => {
+/*document.addEventListener("keydown", (Event) => {
   document.querySelectorAll(".key").forEach((el) => {
     if (el.classList.contains(`${Event.code}`)) {
       el.classList.add("key_press");
@@ -155,7 +155,7 @@ document.addEventListener("keydown", (Event) => {
   });
 });
 
-function lightOff () {
+function lightOff() {
   document.addEventListener("keyup", (Event) => {
     document.querySelectorAll(".key").forEach((el) => {
       el.classList.remove("key_press");
@@ -197,7 +197,7 @@ document.addEventListener("mousedown", (Event) => {
   }
 });
 
-function clickLightOff () {
+function clickLightOff() {
   document.addEventListener("mouseup", (Event) => {
     Event.target.parentNode.classList.remove("key_press");
     Event.target.classList.remove("key_press");
@@ -214,7 +214,7 @@ const arrRU = [
   "Ё",
   "!",
   "1",
-  "\"",
+  '"',
   "2",
   "№",
   "3",
@@ -294,7 +294,7 @@ const arrRU = [
   "←",
   "↓",
   "→",
-  "Del"
+  "Del",
 ];
 
 // Английская раскладка
@@ -356,7 +356,7 @@ const arrENG = [
   "L",
   ":",
   ";",
-  "\"",
+  '"',
   "'",
   "Enter",
   "Shift",
@@ -384,7 +384,7 @@ const arrENG = [
   "←",
   "↓",
   "→",
-  "Del"
+  "Del",
 ];
 
 // Комбинация клавиш для смены языка
@@ -428,16 +428,16 @@ document.onkeydown = function (event) {
 };
 
 if (localStorage.getItem("count") === "1") {
-  count = +(localStorage.getItem("count"));
+  count = +localStorage.getItem("count");
   switchLang();
 } else if (localStorage.getItem("count") === "0") {
-  count = +(localStorage.getItem("count"));
+  count = +localStorage.getItem("count");
   switchLang();
 }
 
 // Смена языков
 
-function switchLang () {
+function switchLang() {
   let number = 0;
   if (count === 0) {
     const key = document.querySelectorAll(".key");
@@ -465,4 +465,43 @@ function switchLang () {
     }
   }
 }
-switchLang();
+switchLang();*/
+
+const keyboard = document.querySelector(".key_container");
+let textarea = document.querySelector(".textarea");
+let textareaContent = textarea.textContent.split("");
+let checkCapsLock = true;
+let checkShift = false;
+let key = document.querySelectorAll(".key");
+
+function addSingleSymbol(symbol) {
+  textareaContent.push(symbol);
+  textarea.textContent = textareaContent.join("");
+}
+
+function switchCapsLock(caps) {
+  if (checkCapsLock) {
+    caps.classList.add('key_press');
+    key.forEach((element) => {
+      if (!element.classList.contains("spec")) {
+        element.innerHTML = element.innerHTML.toUpperCase();
+      }
+    });
+  } else {
+    caps.classList.remove('key_press');
+    key.forEach((element) => {
+      if (!element.classList.contains("spec")) {
+        element.innerHTML = element.innerHTML.toLowerCase();
+      }
+    });
+  }
+}
+
+keyboard.addEventListener("click", (event) => {
+  let symbol = event.target.innerHTML;
+  if (event.target.innerHTML === "Caps Lock") {
+    checkCapsLock = !checkCapsLock;
+    switchCapsLock(event.target);
+  }
+  addSingleSymbol(symbol)
+});
