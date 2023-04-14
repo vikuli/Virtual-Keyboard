@@ -1,14 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Keyboard</title>
-    <link rel="icon" href="icon.ico">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="icon" href="icon.ico" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="title">Virtual Keyboard</h1>
+    <textarea
+      name="text"
+      class="textarea"
+      placeholder="Hello! Press 'AltLeft' + 'ShiftLeft' to switch the language :)"
+      autofocus
+    ></textarea>
+    <div class="key_container">
+      <div class="key dbl_key spec Backquote">
+        <span class="symbol1">~</span><span class="symbol2">`</span>
+      </div>
+      <div class="key dbl_key spec Digit1\">
+        <span class="symbol1">!</span><span class="symbol2 as">1</span>
+      </div>
+      <div class="key dbl_key spec Digit2">
+        <span class="symbol1">@</span><span class="symbol2">2</span>
+      </div>
+      <div class="key dbl_key spec Digit3">
+        <span class="symbol1">#</span><span class="symbol2">3</span>
+      </div>
+      <div class="key dbl_key spec Digit4">
+        <span class="symbol1">$</span><span class="symbol2">4</span>
+      </div>
+      <div class="key dbl_key spec Digit5">
+        <span class="symbol1">%</span><span class="symbol2">5</span>
+      </div>
+      <div class="key dbl_key spec Digit6">
+        <span class="symbol1">^</span><span class="symbol2">6</span>
+      </div>
+      <div class="key dbl_key spec Digit7">
+        <span class="symbol1">&</span><span class="symbol2">7</span>
+      </div>
+      <div class="key dbl_key spec Digit8">
+        <span class="symbol1">*</span><span class="symbol2">8</span>
+      </div>
+      <div class="key dbl_key spec Digit9">
+        <span class="symbol1">(</span><span class="symbol2">9</span>
+      </div>
+      <div class="key dbl_key spec Digit0">
+        <span class="symbol1">)</span><span class="symbol2">0</span>
+      </div>
+      <div class="key dbl_key spec Minus">
+        <span class="symbol1">_</span><span class="symbol2">-</span>
+      </div>
+      <div class="key dbl_key spec Equal">
+        <span class="symbol1">+</span><span class="symbol2">=</span>
+      </div>
+      <div class="key key_2x spec Backspace">Backspace</div>
+      <div class="key key_2x spec Tab">Tab</div>
+      <div class="key">Q</div>
+      <div class="key">W</div>
+      <div class="key">E</div>
+      <div class="key">R</div>
+      <div class="key">T</div>
+      <div class="key">Y</div>
+      <div class="key">U</div>
+      <div class="key">I</div>
+      <div class="key">O</div>
+      <div class="key">P</div>
+      <div class="key dbl_key spec BracketLeft">
+        <span class="symbol1">{</span><span class="symbol2">[</span>
+      </div>
+      <div class="key dbl_key spec BracketRight">
+        <span class="symbol1">}</span><span class="symbol2">]</span>
+      </div>
+      <div class="key dbl_key spec Backslash">
+        <span class="symbol1">|</span><span class="symbol2">\</span>
+      </div>
+      <div class="key key_2x spec CapsLock key_press">Caps Lock</div>
+      <div class="key">A</div>
+      <div class="key">S</div>
+      <div class="key">D</div>
+      <div class="key">F</div>
+      <div class="key">G</div>
+      <div class="key">H</div>
+      <div class="key">J</div>
+      <div class="key">K</div>
+      <div class="key">L</div>
+      <div class="key dbl_key spec Semicolon">
+        <span class="symbol1">:</span><span class="symbol2">;</span>
+      </div>
+      <div class="key dbl_key spec Quote">
+        <span class="symbol1">"</span><span class="symbol2">'</span>
+      </div>
+      <div class="key key_2x spec Enter">Enter</div>
+      <div class="key key_2x spec ShiftLeft">Shift</div>
+      <div class="key">Z</div>
+      <div class="key">X</div>
+      <div class="key">C</div>
+      <div class="key">V</div>
+      <div class="key">B</div>
+      <div class="key">N</div>
+      <div class="key">M</div>
+      <div class="key dbl_key spec Comma">
+        <span class="symbol1"><</span><span class="symbol2">,</span>
+      </div>
+      <div class="key dbl_key spec Period">
+        <span class="symbol1">></span><span class="symbol2">.</span>
+      </div>
+      <div class="key dbl_key spec Slash">
+        <span class="symbol1">?</span><span class="symbol2">/</span>
+      </div>
+      <div class="key arrow spec ArrowUp">↑</div>
+      <div class="key key_2x spec ShiftRight">Shift</div>
+      <div class="key spec ControlLeft">Ctrl</div>
+      <div class="key spec MetaLeft">Win</div>
+      <div class="key spec AltLeft">Alt</div>
+      <div class="key key_6x spec Space"></div>
+      <div class="key spec AltRight">Alt</div>
+      <div class="key spec ControlRight">Ctrl</div>
+      <div class="key arrow spec ArrowLeft">←</div>
+      <div class="key arrow spec ArrowDown">↓</div>
+      <div class="key arrow spec ArrowRight">→</div>
+      <div class="key spec Delete">Del</div>
+    </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
