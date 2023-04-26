@@ -468,40 +468,82 @@ function switchLang() {
 switchLang();*/
 
 const keyboard = document.querySelector(".key_container");
-let textarea = document.querySelector(".textarea");
+const textarea = document.querySelector(".textarea");
 let textareaContent = textarea.textContent.split("");
 let checkCapsLock = true;
 let checkShift = false;
 let key = document.querySelectorAll(".key");
+const shiftLeft = document.querySelector(".ShiftLeft");
+const shiftRight = document.querySelector(".ShiftRight");
 
 function addSingleSymbol(symbol) {
   textareaContent.push(symbol);
   textarea.textContent = textareaContent.join("");
 }
 
+function switchToUpperCase() {
+  key.forEach((element) => {
+    if (!element.classList.contains("spec")) {
+      element.innerHTML = element.innerHTML.toUpperCase();
+    }
+  });
+}
+
+function switchToLowerCase() {
+  key.forEach((element) => {
+    if (!element.classList.contains("spec")) {
+      element.innerHTML = element.innerHTML.toLowerCase();
+    }
+  });
+}
+
 function switchCapsLock(caps) {
+  checkCapsLock = !checkCapsLock;
+  caps.classList.toggle("key_press");
   if (checkCapsLock) {
-    caps.classList.add('key_press');
-    key.forEach((element) => {
-      if (!element.classList.contains("spec")) {
-        element.innerHTML = element.innerHTML.toUpperCase();
-      }
-    });
+    checkShift ? switchToLowerCase() : switchToUpperCase();
   } else {
-    caps.classList.remove('key_press');
-    key.forEach((element) => {
-      if (!element.classList.contains("spec")) {
-        element.innerHTML = element.innerHTML.toLowerCase();
-      }
-    });
+    checkShift ? switchToUpperCase() : switchToLowerCase();
+  }
+}
+
+function switchShift(shift) {
+  checkShift = !checkShift;
+  shift.classList.toggle("key_press");
+  key.forEach((element) => {
+    if (element.classList.contains("dbl_key")) {
+      element.lastElementChild.classList.toggle("hide");
+    }
+  });
+  if (checkShift) {
+    checkCapsLock ? switchToLowerCase() : switchToUpperCase();
+    shift.classList.contains("ShiftLeft")
+      ? shiftRight.setAttribute("disabled", "disabled")
+      : shiftLeft.setAttribute("disabled", "disabled");
+  } else {
+    checkCapsLock ? switchToUpperCase() : switchToLowerCase();
+    shiftRight.removeAttribute("disabled");
+    shiftLeft.removeAttribute("disabled");
   }
 }
 
 keyboard.addEventListener("click", (event) => {
   let symbol = event.target.innerHTML;
-  if (event.target.innerHTML === "Caps Lock") {
-    checkCapsLock = !checkCapsLock;
+
+  if (event.target.classList.contains("key_container")) {
+    return;
+  }
+
+  if (event.target.classList.contains("CapsLock")) {
     switchCapsLock(event.target);
   }
-  addSingleSymbol(symbol)
+  if (
+    event.target.classList.contains("ShiftLeft") ||
+    event.target.classList.contains("ShiftRight")
+  ) {
+    switchShift(event.target);
+  }
+  if (!event.target.classList.contains("spec")) {
+    addSingleSymbol(symbol);
+  }
 });
