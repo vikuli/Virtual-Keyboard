@@ -472,12 +472,29 @@ const textarea = document.querySelector(".textarea");
 let textareaContent = textarea.textContent.split("");
 let checkCapsLock = true;
 let checkShift = false;
-let key = document.querySelectorAll(".key");
+const key = document.querySelectorAll(".key");
 const shiftLeft = document.querySelector(".ShiftLeft");
 const shiftRight = document.querySelector(".ShiftRight");
 
 function addSingleSymbol(symbol) {
-  textareaContent.push(symbol);
+  if (symbol.classList.contains("dbl_key") && !checkShift) {
+    textareaContent.push(symbol.lastElementChild.innerHTML);
+  }
+  if (symbol.classList.contains("symbol1") && !checkShift) {
+    textareaContent.push(symbol.nextSibling.innerHTML);
+  }
+  if (symbol.classList.contains("symbol2") && !checkShift) {
+    textareaContent.push(symbol.innerHTML);
+  }
+  if (symbol.classList.contains("dbl_key") && checkShift) {
+    textareaContent.push(symbol.firstElementChild.textContent);
+  }
+  if (symbol.classList.contains("symbol1") && checkShift) {
+    textareaContent.push(symbol.textContent);
+  }
+  if (symbol.classList.contains("single_key")) {
+    textareaContent.push(symbol.innerHTML);
+  }
   textarea.textContent = textareaContent.join("");
 }
 
@@ -528,12 +545,16 @@ function switchShift(shift) {
 }
 
 keyboard.addEventListener("click", (event) => {
-  let symbol = event.target.innerHTML;
-
   if (event.target.classList.contains("key_container")) {
     return;
   }
-
+  if (
+    event.target.classList.contains("single_key") ||
+    event.target.classList.contains("dbl_key") ||
+    event.target.parentElement.classList.contains("dbl_key")
+  ) {
+    addSingleSymbol(event.target);
+  }
   if (event.target.classList.contains("CapsLock")) {
     switchCapsLock(event.target);
   }
@@ -543,7 +564,6 @@ keyboard.addEventListener("click", (event) => {
   ) {
     switchShift(event.target);
   }
-  if (!event.target.classList.contains("spec")) {
-    addSingleSymbol(symbol);
-  }
 });
+
+// TODO: сделать пробел
