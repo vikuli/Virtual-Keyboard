@@ -562,7 +562,7 @@ function switchShift(shift) {
   }
 }
 
-function deleteSymbol() {
+function deleteSymbolBack() {
   if (textarea.textContent) {
     if (textarea.selectionEnd > textarea.selectionStart) {
       cursorPosition = textarea.selectionStart;
@@ -575,6 +575,22 @@ function deleteSymbol() {
         cursorPosition--;
         textareaContent.splice(cursorPosition, 1);
       }
+    }
+    textarea.textContent = textareaContent.join("");
+    textarea.selectionStart = cursorPosition;
+  }
+}
+
+function deleteSymbolAhead() {
+  if (textarea.textContent) {
+    if (textarea.selectionEnd > textarea.selectionStart) {
+      cursorPosition = textarea.selectionStart;
+      textareaContent.splice(
+        cursorPosition,
+        textarea.selectionEnd - cursorPosition
+      );
+    } else {
+      textareaContent.splice(cursorPosition, 1);
     }
     textarea.textContent = textareaContent.join("");
     textarea.selectionStart = cursorPosition;
@@ -630,7 +646,10 @@ keyboard.addEventListener("click", (event) => {
     switchShift(event.target);
   }
   if (event.target.classList.contains("Backspace")) {
-    deleteSymbol();
+    deleteSymbolBack();
+  }
+  if (event.target.classList.contains("Delete")) {
+    deleteSymbolAhead();
   }
   if (event.target.classList.contains("arrow")) {
     moveCursor(event.target);
