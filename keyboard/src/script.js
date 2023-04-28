@@ -564,10 +564,42 @@ function switchShift(shift) {
 
 function deleteSymbol() {
   if (textarea.textContent) {
-    cursorPosition--;
-    textareaContent.splice(cursorPosition, 1);
+    if (textarea.selectionEnd > textarea.selectionStart) {
+      cursorPosition = textarea.selectionStart;
+      textareaContent.splice(
+        cursorPosition,
+        textarea.selectionEnd - cursorPosition
+      );
+    } else {
+      if (cursorPosition) {
+        cursorPosition--;
+        textareaContent.splice(cursorPosition, 1);
+      }
+    }
     textarea.textContent = textareaContent.join("");
     textarea.selectionStart = cursorPosition;
+  }
+}
+
+function moveCursor(arrow) {
+  if (textarea.textContent) {
+    if (arrow.classList.contains("ArrowLeft") && cursorPosition) {
+      cursorPosition--;
+    }
+    if (
+      arrow.classList.contains("ArrowRight") &&
+      cursorPosition < textarea.textContent.length
+    ) {
+      cursorPosition++;
+    }
+    if (arrow.classList.contains("ArrowDown")) {
+      cursorPosition = textarea.textContent.length;
+    }
+    if (arrow.classList.contains("ArrowUp")) {
+      cursorPosition = 0;
+    }
+    textarea.selectionStart = cursorPosition;
+    textarea.selectionEnd = cursorPosition;
   }
 }
 
@@ -600,10 +632,7 @@ keyboard.addEventListener("click", (event) => {
   if (event.target.classList.contains("Backspace")) {
     deleteSymbol();
   }
-  // if (event.target.classList.contains("ArrowLeft")) {
-  //   console.log('textarea.selectionStart', textarea.selectionStart)
-  //   // counter = counter + 1;
-  //   // textarea.selectionStart = textarea.value.length-counter;
-  //   // textarea.selectionEnd = textarea.value.length-counter;
-  // }
+  if (event.target.classList.contains("arrow")) {
+    moveCursor(event.target);
+  }
 });
