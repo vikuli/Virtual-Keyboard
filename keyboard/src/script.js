@@ -469,33 +469,51 @@ switchLang();*/
 
 const keyboard = document.querySelector(".key_container");
 const textarea = document.querySelector(".textarea");
-let textareaContent = textarea.textContent.split("");
-let checkCapsLock = true;
-let checkShift = false;
 const key = document.querySelectorAll(".key");
 const shiftLeft = document.querySelector(".ShiftLeft");
 const shiftRight = document.querySelector(".ShiftRight");
 
+let textareaContent = textarea.textContent.split("");
+
+let checkCapsLock = true;
+let checkShift = false;
+
+let cursorPosition = textarea.selectionStart;
+
+textarea.addEventListener("click", () => {
+  cursorPosition = textarea.selectionStart;
+});
+
 function addSingleSymbol(symbol) {
   if (symbol.classList.contains("dbl_key") && !checkShift) {
-    textareaContent.push(symbol.lastElementChild.innerHTML);
+    textareaContent.splice(
+      cursorPosition,
+      0,
+      symbol.lastElementChild.innerHTML
+    );
   }
   if (symbol.classList.contains("symbol1") && !checkShift) {
-    textareaContent.push(symbol.nextSibling.innerHTML);
+    textareaContent.splice(cursorPosition, 0, symbol.nextSibling.innerHTML);
   }
   if (symbol.classList.contains("symbol2") && !checkShift) {
-    textareaContent.push(symbol.innerHTML);
+    textareaContent.splice(cursorPosition, 0, symbol.innerHTML);
   }
   if (symbol.classList.contains("dbl_key") && checkShift) {
-    textareaContent.push(symbol.firstElementChild.textContent);
+    textareaContent.splice(
+      cursorPosition,
+      0,
+      symbol.firstElementChild.textContent
+    );
   }
   if (symbol.classList.contains("symbol1") && checkShift) {
-    textareaContent.push(symbol.textContent);
+    textareaContent.splice(cursorPosition, 0, symbol.textContent);
   }
   if (symbol.classList.contains("single_key")) {
-    textareaContent.push(symbol.innerHTML);
+    textareaContent.splice(cursorPosition, 0, symbol.innerHTML);
   }
+  cursorPosition++;
   textarea.textContent = textareaContent.join("");
+  textarea.selectionStart = cursorPosition;
 }
 
 function switchToUpperCase() {
@@ -544,6 +562,19 @@ function switchShift(shift) {
   }
 }
 
+function deleteSymbol() {
+  cursorPosition--;
+  textareaContent.splice(cursorPosition, 1);
+  textarea.textContent = textareaContent.join("");
+  textarea.selectionStart = cursorPosition;
+}
+
+keyboard.addEventListener("mousedown", (event) => {
+  if (!event.target.classList.contains("textarea")) {
+    event.preventDefault();
+  }
+});
+
 keyboard.addEventListener("click", (event) => {
   if (event.target.classList.contains("key_container")) {
     return;
@@ -564,6 +595,13 @@ keyboard.addEventListener("click", (event) => {
   ) {
     switchShift(event.target);
   }
+  if (event.target.classList.contains("Backspace")) {
+    deleteSymbol();
+  }
+  // if (event.target.classList.contains("ArrowLeft")) {
+  //   console.log('textarea.selectionStart', textarea.selectionStart)
+  //   // counter = counter + 1;
+  //   // textarea.selectionStart = textarea.value.length-counter;
+  //   // textarea.selectionEnd = textarea.value.length-counter;
+  // }
 });
-
-// TODO: сделать пробел
