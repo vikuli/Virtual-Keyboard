@@ -563,10 +563,12 @@ function switchShift(shift) {
 }
 
 function deleteSymbol() {
-  cursorPosition--;
-  textareaContent.splice(cursorPosition, 1);
-  textarea.textContent = textareaContent.join("");
-  textarea.selectionStart = cursorPosition;
+  if (textarea.textContent) {
+    cursorPosition--;
+    textareaContent.splice(cursorPosition, 1);
+    textarea.textContent = textareaContent.join("");
+    textarea.selectionStart = cursorPosition;
+  }
 }
 
 keyboard.addEventListener("mousedown", (event) => {
