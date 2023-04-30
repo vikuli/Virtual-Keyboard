@@ -482,6 +482,7 @@ let cursorPosition = textarea.selectionStart;
 
 textarea.addEventListener("click", () => {
   cursorPosition = textarea.selectionStart;
+  console.log("cursorPosition", cursorPosition);
 });
 
 function addSingleSymbol(symbol) {
@@ -619,6 +620,13 @@ function moveCursor(arrow) {
   }
 }
 
+function addEnter() {
+  cursorPosition++;
+  textareaContent.splice(cursorPosition, 0, "\n");
+  textarea.textContent = textareaContent.join("");
+  textarea.selectionStart = cursorPosition;
+}
+
 keyboard.addEventListener("mousedown", (event) => {
   if (!event.target.classList.contains("textarea")) {
     event.preventDefault();
@@ -654,4 +662,11 @@ keyboard.addEventListener("click", (event) => {
   if (event.target.classList.contains("arrow")) {
     moveCursor(event.target);
   }
+  if (event.target.classList.contains("Enter")) {
+    addEnter();
+  }
 });
+
+// TODO: сделать TAB
+// TODO: связать физическую клаву с виртуальной
+// TODO: сделать перевод
