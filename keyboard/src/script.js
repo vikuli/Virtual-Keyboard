@@ -621,10 +621,22 @@ function moveCursor(arrow) {
 }
 
 function addEnter() {
-  cursorPosition++;
   textareaContent.splice(cursorPosition, 0, "\n");
   textarea.textContent = textareaContent.join("");
+  cursorPosition++;
   textarea.selectionStart = cursorPosition;
+}
+
+function addTab() {
+  if (
+    textareaContent[cursorPosition - 1] === "\n" ||
+    textarea.selectionStart === 0
+  ) {
+    textareaContent.splice(cursorPosition, 0, " ", " ", " ", " ");
+    textarea.textContent = textareaContent.join("");
+    cursorPosition = cursorPosition + 4;
+    textarea.selectionStart = cursorPosition;
+  }
 }
 
 keyboard.addEventListener("mousedown", (event) => {
@@ -665,8 +677,11 @@ keyboard.addEventListener("click", (event) => {
   if (event.target.classList.contains("Enter")) {
     addEnter();
   }
+  if (event.target.classList.contains("Tab")) {
+    addTab();
+  }
 });
 
-// TODO: сделать TAB
+// TODO: разобраться с пробелами, которые обрезаются в начале строки
 // TODO: связать физическую клаву с виртуальной
 // TODO: сделать перевод
