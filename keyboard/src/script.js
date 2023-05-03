@@ -470,6 +470,7 @@ switchLang();*/
 const keyboard = document.querySelector(".key_container");
 const textarea = document.querySelector(".textarea");
 const key = document.querySelectorAll(".key");
+
 const shiftLeft = document.querySelector(".ShiftLeft");
 const shiftRight = document.querySelector(".ShiftRight");
 
@@ -477,6 +478,7 @@ let textareaContent = textarea.textContent.split("");
 
 let checkCapsLock = true;
 let checkShift = false;
+let pressed = false;
 
 let cursorPosition = textarea.selectionStart;
 
@@ -486,31 +488,48 @@ textarea.addEventListener("click", () => {
 });
 
 function addSingleSymbol(symbol) {
+  cursorPosition = textarea.selectionStart;
   if (symbol.classList.contains("dbl_key") && !checkShift) {
     textareaContent.splice(
       cursorPosition,
-      0,
+      textarea.selectionEnd - cursorPosition,
       symbol.lastElementChild.innerHTML
     );
   }
   if (symbol.classList.contains("symbol1") && !checkShift) {
-    textareaContent.splice(cursorPosition, 0, symbol.nextSibling.innerHTML);
+    textareaContent.splice(
+      cursorPosition,
+      textarea.selectionEnd - cursorPosition,
+      symbol.nextSibling.innerHTML
+    );
   }
   if (symbol.classList.contains("symbol2") && !checkShift) {
-    textareaContent.splice(cursorPosition, 0, symbol.innerHTML);
+    textareaContent.splice(
+      cursorPosition,
+      textarea.selectionEnd - cursorPosition,
+      symbol.innerHTML
+    );
   }
   if (symbol.classList.contains("dbl_key") && checkShift) {
     textareaContent.splice(
       cursorPosition,
-      0,
+      textarea.selectionEnd - cursorPosition,
       symbol.firstElementChild.textContent
     );
   }
   if (symbol.classList.contains("symbol1") && checkShift) {
-    textareaContent.splice(cursorPosition, 0, symbol.textContent);
+    textareaContent.splice(
+      cursorPosition,
+      textarea.selectionEnd - cursorPosition,
+      symbol.textContent
+    );
   }
   if (symbol.classList.contains("single_key")) {
-    textareaContent.splice(cursorPosition, 0, symbol.innerHTML);
+    textareaContent.splice(
+      cursorPosition,
+      textarea.selectionEnd - cursorPosition,
+      symbol.innerHTML
+    );
   }
   cursorPosition++;
   textarea.textContent = textareaContent.join("");
@@ -545,6 +564,7 @@ function switchCapsLock(caps) {
 
 function switchShift(shift) {
   checkShift = !checkShift;
+  //checkShift = shift.shiftKey;
   shift.classList.toggle("key_press");
   key.forEach((element) => {
     if (element.classList.contains("dbl_key")) {
@@ -621,7 +641,12 @@ function moveCursor(arrow) {
 }
 
 function addEnter() {
-  textareaContent.splice(cursorPosition, 0, "\n");
+  cursorPosition = textarea.selectionStart;
+  textareaContent.splice(
+    cursorPosition,
+    textarea.selectionEnd - cursorPosition,
+    "\n"
+  );
   textarea.textContent = textareaContent.join("");
   cursorPosition++;
   textarea.selectionStart = cursorPosition;
@@ -629,8 +654,9 @@ function addEnter() {
 
 function addTab() {
   if (
-    textareaContent[cursorPosition - 1] === "\n" ||
-    textarea.selectionStart === 0
+    textarea.selectionEnd === textarea.selectionStart &&
+    (textareaContent[cursorPosition - 1] === "\n" ||
+      textarea.selectionStart === 0)
   ) {
     textareaContent.splice(cursorPosition, 0, " ", " ", " ", " ");
     textarea.textContent = textareaContent.join("");
@@ -682,6 +708,77 @@ keyboard.addEventListener("click", (event) => {
   }
 });
 
-// TODO: разобраться с пробелами, которые обрезаются в начале строки
-// TODO: связать физическую клаву с виртуальной
+textarea.addEventListener("keydown", (event) => {
+  event.preventDefault();
+  console.log(event);
+  key.forEach((el) => {
+    if (
+      el.innerHTML.toLowerCase() === event.key.toLowerCase() &&
+      el.classList.contains("single_key")
+    ) {
+      addSingleSymbol(el);
+    }
+    if (
+      el.classList.contains("dbl_key") &&
+      (el.lastElementChild.innerHTML === event.key ||
+        el.firstElementChild.innerHTML === event.key)
+    ) {
+      addSingleSymbol(el);
+    }
+    if (el.classList.contains(event.key) && event.key === "CapsLock") {
+      switchCapsLock(el);
+    }
+    if (el.classList.contains(event.key) && event.key === "Enter") {
+      addEnter();
+    }
+    if (el.classList.contains(event.key) && event.key === "Backspace") {
+      deleteSymbolBack();
+    }
+    if (el.classList.contains(event.key) && event.key === "Tab") {
+      addTab();
+    }
+    if (el.classList.contains(event.key) && event.key === "Delete") {
+      deleteSymbolAhead();
+    }
+    if (
+      el.classList.contains(event.key) &&
+      (event.key === "ArrowUp" ||
+        event.key === "ArrowLeft" ||
+        event.key === "ArrowDown" ||
+        event.key === "ArrowRight")
+    ) {
+      moveCursor(el);
+    }
+  });
+  if (event.code === "ShiftLeft") {
+    if (pressed) {
+      event.preventDefault();
+    } else {
+      shiftLeft.click();
+    }
+    pressed = true;
+  }
+  if (event.code === "ShiftRight") {
+    if (pressed) {
+      event.preventDefault();
+    } else {
+      shiftRight.click();
+    }
+    pressed = true;
+  }
+});
+
+textarea.addEventListener("keyup", (event) => {
+  event.preventDefault();
+  if (event.code === "ShiftLeft") {
+    pressed = false;
+    shiftLeft.click();
+  }
+  if (event.code === "ShiftRight") {
+    pressed = false;
+    shiftRight.click();
+  }
+});
+
+// TODO: сделать подсветку клавиш при нажатии на физ. или вирт. клавиатуре
 // TODO: сделать перевод
