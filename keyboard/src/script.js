@@ -487,9 +487,15 @@ textarea.addEventListener("click", () => {
   console.log("cursorPosition", cursorPosition);
 });
 
+function toggleBacklight(key) {
+  key.classList.add("key_press");
+  setTimeout(() => key.classList.remove("key_press"), 300);
+}
+
 function addSingleSymbol(symbol) {
   cursorPosition = textarea.selectionStart;
   if (symbol.classList.contains("dbl_key") && !checkShift) {
+    toggleBacklight(symbol);
     textareaContent.splice(
       cursorPosition,
       textarea.selectionEnd - cursorPosition,
@@ -497,6 +503,7 @@ function addSingleSymbol(symbol) {
     );
   }
   if (symbol.classList.contains("symbol1") && !checkShift) {
+    toggleBacklight(symbol.parentElement);
     textareaContent.splice(
       cursorPosition,
       textarea.selectionEnd - cursorPosition,
@@ -504,6 +511,7 @@ function addSingleSymbol(symbol) {
     );
   }
   if (symbol.classList.contains("symbol2") && !checkShift) {
+    toggleBacklight(symbol.parentElement);
     textareaContent.splice(
       cursorPosition,
       textarea.selectionEnd - cursorPosition,
@@ -511,6 +519,7 @@ function addSingleSymbol(symbol) {
     );
   }
   if (symbol.classList.contains("dbl_key") && checkShift) {
+    toggleBacklight(symbol);
     textareaContent.splice(
       cursorPosition,
       textarea.selectionEnd - cursorPosition,
@@ -518,6 +527,7 @@ function addSingleSymbol(symbol) {
     );
   }
   if (symbol.classList.contains("symbol1") && checkShift) {
+    toggleBacklight(symbol.parentElement);
     textareaContent.splice(
       cursorPosition,
       textarea.selectionEnd - cursorPosition,
@@ -525,6 +535,7 @@ function addSingleSymbol(symbol) {
     );
   }
   if (symbol.classList.contains("single_key")) {
+    toggleBacklight(symbol);
     textareaContent.splice(
       cursorPosition,
       textarea.selectionEnd - cursorPosition,
@@ -564,7 +575,6 @@ function switchCapsLock(caps) {
 
 function switchShift(shift) {
   checkShift = !checkShift;
-  //checkShift = shift.shiftKey;
   shift.classList.toggle("key_press");
   key.forEach((element) => {
     if (element.classList.contains("dbl_key")) {
@@ -583,7 +593,8 @@ function switchShift(shift) {
   }
 }
 
-function deleteSymbolBack() {
+function deleteSymbolBack(backspace) {
+  toggleBacklight(backspace);
   if (textarea.textContent) {
     if (textarea.selectionEnd > textarea.selectionStart) {
       cursorPosition = textarea.selectionStart;
@@ -602,7 +613,8 @@ function deleteSymbolBack() {
   }
 }
 
-function deleteSymbolAhead() {
+function deleteSymbolAhead(del) {
+  toggleBacklight(del);
   if (textarea.textContent) {
     if (textarea.selectionEnd > textarea.selectionStart) {
       cursorPosition = textarea.selectionStart;
@@ -619,6 +631,7 @@ function deleteSymbolAhead() {
 }
 
 function moveCursor(arrow) {
+  toggleBacklight(arrow);
   if (textarea.textContent) {
     if (arrow.classList.contains("ArrowLeft") && cursorPosition) {
       cursorPosition--;
@@ -640,7 +653,8 @@ function moveCursor(arrow) {
   }
 }
 
-function addEnter() {
+function addEnter(enter) {
+  toggleBacklight(enter);
   cursorPosition = textarea.selectionStart;
   textareaContent.splice(
     cursorPosition,
@@ -652,7 +666,8 @@ function addEnter() {
   textarea.selectionStart = cursorPosition;
 }
 
-function addTab() {
+function addTab(tab) {
+  toggleBacklight(tab);
   if (
     textarea.selectionEnd === textarea.selectionStart &&
     (textareaContent[cursorPosition - 1] === "\n" ||
@@ -692,19 +707,19 @@ keyboard.addEventListener("click", (event) => {
     switchShift(event.target);
   }
   if (event.target.classList.contains("Backspace")) {
-    deleteSymbolBack();
+    deleteSymbolBack(event.target);
   }
   if (event.target.classList.contains("Delete")) {
-    deleteSymbolAhead();
+    deleteSymbolAhead(event.target);
   }
   if (event.target.classList.contains("arrow")) {
     moveCursor(event.target);
   }
   if (event.target.classList.contains("Enter")) {
-    addEnter();
+    addEnter(event.target);
   }
   if (event.target.classList.contains("Tab")) {
-    addTab();
+    addTab(event.target);
   }
 });
 
@@ -729,16 +744,16 @@ textarea.addEventListener("keydown", (event) => {
       switchCapsLock(el);
     }
     if (el.classList.contains(event.key) && event.key === "Enter") {
-      addEnter();
+      addEnter(el);
     }
     if (el.classList.contains(event.key) && event.key === "Backspace") {
-      deleteSymbolBack();
+      deleteSymbolBack(el);
     }
     if (el.classList.contains(event.key) && event.key === "Tab") {
-      addTab();
+      addTab(el);
     }
     if (el.classList.contains(event.key) && event.key === "Delete") {
-      deleteSymbolAhead();
+      deleteSymbolAhead(el);
     }
     if (
       el.classList.contains(event.key) &&
@@ -780,5 +795,4 @@ textarea.addEventListener("keyup", (event) => {
   }
 });
 
-// TODO: сделать подсветку клавиш при нажатии на физ. или вирт. клавиатуре
 // TODO: сделать перевод
