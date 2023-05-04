@@ -20,6 +20,14 @@ let pressedShift = false;
 let pressedAlt = false;
 let isEnglish = true;
 
+if (localStorage.getItem("lang") === "false") {
+  isEnglish = false;
+} else if (localStorage.getItem("lang") === "true") {
+  isEnglish = true;
+}
+
+draw();
+
 textarea.addEventListener("click", () => {
   cursorPosition = textarea.selectionStart;
 });
@@ -287,7 +295,9 @@ function draw() {
     title.innerHTML = "Виртуальная клавиатура";
     textarea.setAttribute(
       "placeholder",
-      "Привет! Нажми 'AltLeft' + 'ShiftLeft' или 'AltRight' + 'ShiftRight', чтобы переключить язык :)"
+      `Привет! Нажми 'AltLeft' + 'ShiftLeft' или 'AltRight' + 'ShiftRight', чтобы переключить язык.
+Пожалуйста, обрати внимание, что ввод текста с физической клавиатуры не будет работать, если языки в системе и в виртуальной клавиатуре не совпадают.
+Наслаждайся!`
     );
   } else {
     for (let i = 0; i < key.length; i++) {
@@ -315,13 +325,16 @@ function draw() {
     title.innerHTML = "Virtual Keyboard";
     textarea.setAttribute(
       "placeholder",
-      "Hello! Press 'AltLeft' + 'ShiftLeft' or 'AltRight' + 'ShiftRight' to switch the language :)"
+      `Hello! Press 'AltLeft' + 'ShiftLeft' or 'AltRight' + 'ShiftRight' to switch the language :)
+Please note that text input from the physical keyboard will not work if the languages on the system and on the virtual keyboard do not match.
+Enjoy!`
     );
   }
 }
 
 function changeLanguage() {
   isEnglish = !isEnglish;
+  localStorage.setItem("lang", isEnglish);
   draw();
 }
 
@@ -470,4 +483,3 @@ textarea.addEventListener("keyup", (event) => {
 });
 
 // TODO: сделать горячие клавиши
-// TODO: сохранять раскладку в локал
