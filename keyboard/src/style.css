@@ -15,7 +15,7 @@ body {
 
 .title {
   margin: 0;
-  font-family: "Lucida Sans Unicode", sans-serif;
+  font-family: "Arial", sans-serif;
   color: #cec0b0;
   font-size: 40px;
   line-height: 80px;
@@ -28,7 +28,7 @@ body {
   resize: none;
   margin-bottom: 20px;
   border: solid 1px #000000;
-  font-family: "Lucida Sans Unicode", sans-serif;
+  font-family: "Arial", sans-serif;
   color: #000000;
   font-size: 16px;
   line-height: 24px;
@@ -64,7 +64,7 @@ body {
   background-color: #45494c;
   box-shadow: 3px 3px 12px 0px #000000;
   text-align: center;
-  font-family: "Lucida Sans Unicode", sans-serif;
+  font-family: "Arial", sans-serif;
   color: #dbdfde;
   font-size: 16px;
   line-height: 20px;
