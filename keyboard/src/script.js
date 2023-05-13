@@ -383,12 +383,27 @@ keyboard.addEventListener("click", (event) => {
     event.target.classList.contains("AltLeft") ||
     event.target.classList.contains("AltRight")
   ) {
-    turnOnAlt(event.target);
+    checkAlt ? turnOffAlt() : turnOnAlt(event.target);
   }
 });
 
 textarea.addEventListener("keydown", (event) => {
-  event.preventDefault();
+  if (
+    event.code !== "F1" &&
+    event.code !== "F2" &&
+    event.code !== "F3" &&
+    event.code !== "F4" &&
+    event.code !== "F5" &&
+    event.code !== "F6" &&
+    event.code !== "F7" &&
+    event.code !== "F8" &&
+    event.code !== "F9" &&
+    event.code !== "F10" &&
+    event.code !== "F11" &&
+    event.code !== "F12"
+  ) {
+    event.preventDefault();
+  }
   key.forEach((el) => {
     if (
       el.innerHTML.toLowerCase() === event.key.toLowerCase() &&
@@ -481,5 +496,3 @@ textarea.addEventListener("keyup", (event) => {
     turnOffAlt();
   }
 });
-
-// TODO: сделать горячие клавиши
