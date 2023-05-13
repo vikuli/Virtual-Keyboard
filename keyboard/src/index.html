@@ -1,14 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Keyboard</title>
-    <link rel="icon" href="icon.ico">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <script src="script.js"></script>
-</body>
+    <link rel="icon" href="icon.ico" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="title">Virtual Keyboard</h1>
+    <textarea
+      name="text"
+      class="textarea"
+      placeholder="Hello! Press 'AltLeft' + 'ShiftLeft' or 'AltRight' + 'ShiftRight' to switch the language.
+Please note that text input from the physical keyboard will not work if the languages on the system and on the virtual keyboard do not match.
+Enjoy!"
+      autofocus
+    ></textarea>
+    <div class="key_container">
+      <button class="key dbl_key spec Backquote">
+        <span class="symbol1">~</span><span class="symbol2">`</span>
+      </button>
+      <button class="key dbl_key spec Digit1">
+        <span class="symbol1">!</span><span class="symbol2 as">1</span>
+      </button>
+      <button class="key dbl_key spec Digit2">
+        <span class="symbol1">@</span><span class="symbol2">2</span>
+      </button>
+      <button class="key dbl_key spec Digit3">
+        <span class="symbol1">#</span><span class="symbol2">3</span>
+      </button>
+      <button class="key dbl_key spec Digit4">
+        <span class="symbol1">$</span><span class="symbol2">4</span>
+      </button>
+      <button class="key dbl_key spec Digit5">
+        <span class="symbol1">%</span><span class="symbol2">5</span>
+      </button>
+      <button class="key dbl_key spec Digit6">
+        <span class="symbol1">^</span><span class="symbol2">6</span>
+      </button>
+      <button class="key dbl_key spec Digit7">
+        <span class="symbol1">&</span><span class="symbol2">7</span>
+      </button>
+      <button class="key dbl_key spec Digit8">
+        <span class="symbol1">*</span><span class="symbol2">8</span>
+      </button>
+      <button class="key dbl_key spec Digit9">
+        <span class="symbol1">(</span><span class="symbol2">9</span>
+      </button>
+      <button class="key dbl_key spec Digit0">
+        <span class="symbol1">)</span><span class="symbol2">0</span>
+      </button>
+      <button class="key dbl_key spec Minus">
+        <span class="symbol1">_</span><span class="symbol2">-</span>
+      </button>
+      <button class="key dbl_key spec Equal">
+        <span class="symbol1">+</span><span class="symbol2">=</span>
+      </button>
+      <button class="key key_2x spec Backspace">Backspace</button>
+      <button class="key key_2x spec Tab">Tab</button>
+      <button  class="key single_key">Q</button>
+      <button  class="key single_key">W</button>
+      <button  class="key single_key">E</button>
+      <button  class="key single_key">R</button>
+      <button  class="key single_key">T</button>
+      <button  class="key single_key">Y</button>
+      <button  class="key single_key">U</button>
+      <button  class="key single_key">I</button>
+      <button  class="key single_key">O</button>
+      <button  class="key single_key">P</button>
+      <button class="key dbl_key spec BracketLeft">
+        <span class="symbol1">{</span><span class="symbol2">[</span>
+      </button>
+      <button class="key dbl_key spec BracketRight">
+        <span class="symbol1">}</span><span class="symbol2">]</span>
+      </button>
+      <button class="key dbl_key spec Backslash">
+        <span class="symbol1">|</span><span class="symbol2">\</span>
+      </button>
+      <button class="key key_2x spec CapsLock key_press">Caps Lock</button>
+      <button  class="key single_key">A</button>
+      <button  class="key single_key">S</button>
+      <button  class="key single_key">D</button>
+      <button  class="key single_key">F</button>
+      <button  class="key single_key">G</button>
+      <button  class="key single_key">H</button>
+      <button  class="key single_key">J</button>
+      <button  class="key single_key">K</button>
+      <button  class="key single_key">L</button>
+      <button class="key dbl_key spec Semicolon">
+        <span class="symbol1">:</span><span class="symbol2">;</span>
+      </button>
+      <button class="key dbl_key spec Quote">
+        <span class="symbol1">"</span><span class="symbol2">'</span>
+      </button>
+      <button class="key key_2x spec Enter">Enter</button>
+      <button class="key key_2x spec ShiftLeft">Shift</button>
+      <button  class="key single_key">Z</button>
+      <button  class="key single_key">X</button>
+      <button  class="key single_key">C</button>
+      <button  class="key single_key">V</button>
+      <button  class="key single_key">B</button>
+      <button  class="key single_key">N</button>
+      <button  class="key single_key">M</button>
+      <button class="key dbl_key spec Comma">
+        <span class="symbol1"><</span><span class="symbol2">,</span>
+      </button>
+      <button class="key dbl_key spec Period">
+        <span class="symbol1">></span><span class="symbol2">.</span>
+      </button>
+      <button class="key dbl_key spec Slash">
+        <span class="symbol1">?</span><span class="symbol2">/</span>
+      </button>
+      <button class="key arrow spec arrow ArrowUp">↑</button>
+      <button class="key key_2x spec ShiftRight">Shift</button>
+      <button class="key spec ControlLeft" disabled="disabled">Ctrl</button>
+      <button class="key spec MetaLeft" disabled="disabled">Win</button>
+      <button class="key spec AltLeft">Alt</button>
+      <button class="key key_6x single_key Space"> </button>
+      <button class="key spec AltRight">Alt</button>
+      <button class="key spec ControlRight" disabled="disabled">Ctrl</button>
+      <button class="key arrow spec arrow ArrowLeft">←</button>
+      <button class="key arrow spec arrow ArrowDown">↓</button>
+      <button class="key arrow spec arrow ArrowRight">→</button>
+      <button class="key spec Delete">Del</button>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>
